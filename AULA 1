@@ -1,11 +1,3 @@
-/******************************************************************************
-
-                            Online C Compiler.
-                Code, Compile, Run and Debug C program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
 #include <stdio.h>
 
 // Declaração de funções
@@ -18,82 +10,59 @@ double cal(double a, double b, char op);
 int main() {
     double num1, num2;
     char op;
+
+    // Leitura dos números
     printf("Digite dois números: ");
     scanf("%lf %lf", &num1, &num2);
     
-     printf("Informe a operação: A = Adição, S = Subtração, M = Multiplicação, D = Divisão ");
-    scanf("%lf %lf", &num1, &num2);
+    // Leitura da operação
+    printf("Informe a operação: A = Adição, S = Subtração, M = Multiplicação, D = Divisão: ");
+    scanf(" %c", &op); // Note o espaço antes de %c para ignorar qualquer caractere de nova linha remanescente
 
-//("Adição: %.2lf\n", add(num1, num2));
-//printf("Subtração: %.2lf\n", subtract(num1, num2));
-//printf("Multiplicação: %.2lf\n", multiply(num1, num2));
-//printf("Divisão: %.2lf\n", divide(num1, num2));
-     printf("Cal: %.2lf\n", cal(num1, num2, op));
+    // Chamada da função cal e exibição do resultado
+    printf("Resultado: %.2lf\n", cal(num1, num2, op));
 
     return 0;
 }
 
 // Implementação da função de adição
-// Descrição: Esta função realiza a adição de dois números do tipo double.
-// Parâmetros:a: O primeiro número a ser adicionado. b: O segundo número a ser adicionado.
-// Retorno: Retorna a soma de a e b.
-// Efeito Colateral: A função simplesmente calcula e retorna o resultado da adição.
-
 double add(double a, double b) {
     return a + b;
 }
 
 // Implementação da função de subtração
-// Descrição: Esta função realiza a subtração de dois números do tipo double.
-// Parâmetros: a: O número de onde será subtraído. b: O número que será subtraído de a.
-// Retorno: Retorna a diferença entre a e b (a - b).
-// Efeito Colateral: A função calcula e retorna o resultado da subtração.
 double subtract(double a, double b) {
     return a - b;
 }
 
 // Implementação da função de multiplicação
-// Descrição: Esta função realiza a multiplicação de dois números do tipo double.
-// Parâmetros: a: O primeiro número a ser multiplicado. b: O segundo número a ser multiplicado.
-// Retorno:Retorna o produto de a e b.
-// Efeito Colateral: A função calcula e retorna o resultado da multiplicação.
-
 double multiply(double a, double b) {
     return a * b;
 }
 
 // Implementação da função de divisão
-// Descrição: Esta função realiza a divisão de dois números do tipo double.
-// Parâmetros: O numerador (o número que será dividido). O denominador (o número pelo qual a divisão será realizada).
-// Retorno: Retorna o resultado da divisão de a por b (a / b), se b não for zero. Se b for zero, a função retorna 0.0 para evitar divisão por zero, que poderia causar um erro ou um comportamento indefinido.
-// Efeito Colateral: Se b é zero, a função evita a divisão e retorna 0.0.
-
 double divide(double a, double b) {
     if (b != 0) {
         return a / b;
     } else {
-        return 0.0; // Retorna zero se b é zero para evitar divisão por zero
+        printf("Erro: Divisão por zero.\n");
+        return 0.0;
     }
 }
 
+// Implementação da função cal
 double cal(double a, double b, char op){
-    
-    if(op =='M'){
-        return multiply(a,b);
+    if(op == 'M') {
+        return multiply(a, b);
+    } else if(op == 'S') {
+        return subtract(a, b);
+    } else if(op == 'A') {
+        return add(a, b);
+    } else if(op == 'D') {
+        return divide(a, b);
+    } else {
+        printf("Operação inválida.\n");
+        return 0.0;
     }
-        
-    if(op =='S'){
-        return subtract(a,b);
-    }
-        
-    if(op =='A'){
-        return add(a,b);
-    }
-    if(op =='D'){
-        return divide(a,b);
-        
-    }    
-    
-
 }
 
