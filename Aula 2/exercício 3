@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    // Declaração e inicialização da matriz 3x3
+    int matriz[3][3] = {
+        {1, 2, 3},
+        {5, 6, 7},
+        {8, 9, 0}
+    };
+
+    int i, j;
+    int soma = 0;
+
+    // Impressão da matriz
+    printf("Matriz 3x3:\n");
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            printf("%d ", matriz[i][j]);
+            soma += matriz[i][j];
+        }
+        printf("\n");
+    }
+
+    // Impressão da soma dos elementos
+    printf("A soma de todos os elementos da matriz é: %d\n", soma);
+
+    return 0;
+}
